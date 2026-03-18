@@ -1,0 +1,56 @@
+{
+  "name": "iot-stellar-did-monorepo",
+  "version": "1.0.0",
+  "description": "IoT Payment & Decentralized Identity (DID) project on the Stellar Network",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "contracts",
+    "identity",
+    "api",
+    "web"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces",
+    "dev:api": "npm run dev --workspace=@iot-stellar/api",
+    "dev:web": "npm run dev --workspace=@iot-stellar/web",
+    "build:contracts": "npm run build --workspace=@iot-stellar/contracts",
+    "deploy:contracts": "npm run deploy --workspace=@iot-stellar/contracts",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx,.rs",
+    "format": "prettier --write .",
+    "clean": "npm run clean --workspaces && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.0.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-org/iot-stellar-did.git"
+  },
+  "keywords": [
+    "stellar",
+    "soroban",
+    "blockchain",
+    "iot",
+    "did",
+    "decentralized-identity",
+    "smart-contracts",
+    "rust",
+    "typescript",
+    "nextjs"
+  ],
+  "author": "Your Team",
+  "license": "MIT"
+}

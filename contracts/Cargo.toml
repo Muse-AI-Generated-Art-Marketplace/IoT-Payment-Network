@@ -1,0 +1,39 @@
+[package]
+name = "iot-stellar-contracts"
+version = "0.1.0"
+edition = "2021"
+authors = ["Your Team <team@yourorg.com>"]
+description = "Soroban smart contracts for IoT payment sessions"
+license = "MIT"
+repository = "https://github.com/your-org/iot-stellar-did"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+soroban-sdk = { version = "20.0.0", features = ["testutils"] }
+soroban-token-sdk = "20.0.0"
+serde = { version = "1.0", features = ["derive"], optional = true }
+serde_json = { version = "1.0", optional = true }
+
+[dev-dependencies]
+soroban-sdk = { version = "20.0.0", features = ["testutils"] }
+
+[features]
+default = ["std"]
+std = ["soroban-sdk/std"]
+serde = ["dep:serde", "dep:serde_json", "soroban-sdk/serde"]
+
+[profile.release]
+opt-level = "z"
+overflow-checks = true
+debug = 0
+strip = "symbols"
+debug-assertions = false
+panic = "abort"
+codegen-units = 1
+lto = true
+
+[[bin]]
+name = "iot_stellar_contracts"
+path = "src/lib.rs"
